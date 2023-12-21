@@ -1,0 +1,65 @@
+<script>
+// Function to validate if the input is a number
+function isValidNumber(input) {
+    return !isNaN(input) && isFinite(input);
+}
+
+// Function to perform the calculation based on user input
+function calculate() {
+    do {
+        // Get input for number1 and validate
+        let num1;
+        do {
+            num1 = prompt("Enter the first number:");
+            if (!isValidNumber(num1)) {
+                alert("Error: Please input a valid number for the first number.");
+            }
+        } while (!isValidNumber(num1));
+
+        // Get input for number2 and validate
+        let num2;
+        do {
+            num2 = prompt("Enter the second number:");
+            if (!isValidNumber(num2)) {
+                alert("Error: Please input a valid number for the second number.");
+            }
+        } while (!isValidNumber(num2));
+
+        // Convert inputs to numbers
+        num1 = parseFloat(num1);
+        num2 = parseFloat(num2);
+
+        // Get operation choice
+        let operation = prompt("Choose an operation (+, -, *, /):");
+
+        // Perform the calculation
+        let result;
+        switch (operation) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                result = (num2 !== 0) ? num1 / num2 : (alert("Error: Cannot divide by zero!"), null);
+                break;
+            default:
+                alert("Invalid operation!");
+                return;
+        }
+
+        // Display the result
+        alert("Result: " + result);
+
+        // Ask the user if they want to perform another calculation
+        var anotherCalculation = confirm("Do you want to perform another calculation?");
+    } while (anotherCalculation);
+}
+
+// Call the calculate function
+calculate();
+</script>
